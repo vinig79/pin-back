@@ -3,7 +3,7 @@ import index from './src/routes/index.routes.js'
 
 const app = express();
 
-app.use('/index',index);
+app.use('/',index);
 
 const PORT = 5000;
 app.listen(PORT,()=>{
