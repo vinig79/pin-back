@@ -8,4 +8,5 @@ const sequelize = new Sequelize('wamyjrzi', 'wamyjrzi','eo-3voK8hX-12FJbtbP6I3kk
 );
 
 
+
 export default sequelize
