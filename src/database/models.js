@@ -26,7 +26,8 @@ const User = sequelize.define('user',{
     },
 
     {
-        tableName:'user'
+        tableName:'user',
+        timestamps: false
     }
 )
 
@@ -42,7 +43,8 @@ const Aulas = sequelize.define('aulas',{
         }
     },
     {
-        tableName:'aula'
+        tableName:'aula',
+        timestamps: false
     }
 
 )
@@ -53,7 +55,6 @@ Aulas.belongsTo(User,{foreignKey:"profId"});
 (async () =>{
    await User.sync()
    await Aulas.sync()
-   
 })()
 
 export {User,Aulas}
