@@ -57,4 +57,4 @@ Aulas.belongsTo(User,{foreignKey:"profId"});
    await Aulas.sync()
 })()
 
-export default User
+export { User , Aulas }
