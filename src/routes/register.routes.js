@@ -1,5 +1,5 @@
 import { Router } from "express";
-import sequelize from "../database/config.js";
+
 
 const router = Router();
 
