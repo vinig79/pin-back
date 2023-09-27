@@ -1,7 +1,5 @@
 import { Router } from "express";
-import path from 'path';
-import url from 'url';
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+import {User} from "..//database/models.js"
 
 const router = Router();
 
