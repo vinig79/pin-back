@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
-import sequelize from "./config.js";
+import sq from "./config.js";
 
-const User = sequelize.define('user', {
+const User = sq.define('user', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -31,7 +31,7 @@ const User = sequelize.define('user', {
     }
 )
 
-const Aulas = sequelize.define('aulas', {
+const Aulas = sq.define('aulas', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
