@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from 'sequelize';
 import sq from "./config.js";
 
 const User = sq.define('user', {
