@@ -1,4 +1,4 @@
-import { Sequelize } from 'sequelize';
+import { Sequelize } from 'sequelize/lib/index.js';
 import pg from 'pg'
 
 
