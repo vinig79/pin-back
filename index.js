@@ -5,7 +5,7 @@ import home from './src/routes/home.routes.js';
 import register from './src/routes/register.routes.js';
 import login from './src/routes/login.routes.js';
 //db
-import {User, Aulas} from './src/database/models.js'
+//import {User, Aulas} from './src/database/models.js'
 
 //middleware
 import cors from 'cors';
