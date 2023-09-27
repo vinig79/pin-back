@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { User } from "..//database/models.js"
+
 
 
 const router = Router();
@@ -18,7 +18,6 @@ router.post("/", async (req, res) => {
       })
     }
     console.log(req.body);
-    res.setStatus(200)
     res.send(await User.findAll())
 });
 
