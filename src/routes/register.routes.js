@@ -1,5 +1,5 @@
 import { Router } from "express";
-//import { User } from "../database/models.js";
+import sequelize from "../database/config.js";
 
 const router = Router();
 
