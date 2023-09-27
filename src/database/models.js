@@ -11,10 +11,6 @@ const User = sequelize.define('user',{
             type: Sequelize.STRING,
             allowNull: false
         },
-        cpf:{
-            type: Sequelize.STRING,
-            allowNull: false
-        },
         email:{
             type: Sequelize.STRING,
             allowNull: false
@@ -40,13 +36,13 @@ const Aulas = sequelize.define('aulas',{
             primaryKey: true,
             autoIncrement: true
         },
-        nome:{
+        url:{
             type: Sequelize.STRING,
             allowNull: false
         }
     },
     {
-        tableName:'aulas'
+        tableName:'aula'
     }
 
 )
@@ -57,6 +53,7 @@ Aulas.belongsTo(User,{foreignKey:"profId"});
 (async () =>{
    await User.sync()
    await Aulas.sync()
+   
 })()
 
 export {User,Aulas}
