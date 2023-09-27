@@ -4,10 +4,8 @@ import { User } from "..//database/models.js"
 const router = Router();
 
 
-router.get("/", async (req, res) => {
-  const user = await User.findAll()
-  console.log(user)
-  res.json(user);
+router.get("/", (req, res) => {
+  res.json({server:__dirname});
 });
 
 export default router;
