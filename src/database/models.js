@@ -1,5 +1,5 @@
 //import { Sequelize } from 'sequelize';
-import sequelize from "./config.js";
+//import sequelize from "./config.js";
 
 const User = sequelize.define('user', {
     id: {
@@ -57,4 +57,4 @@ Aulas.belongsTo(User, { foreignKey: "profId" });
     await Aulas.sync()
 })()
 
-export { User, Aulas }
+//export { User, Aulas }
