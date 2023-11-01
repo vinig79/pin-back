@@ -19,6 +19,10 @@ const User = sequelize.define('user', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    many_achievements:{
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
     isprofessor: {
         type: Sequelize.BOOLEAN,
         allowNull: false
