@@ -79,4 +79,4 @@ Achievement.belongsToMany(User, { through: 'UserAchievements' });
     await Achievement.sync();
 })();
 
-export { User, Aulas }
+export { User, Aulas, Achievement }

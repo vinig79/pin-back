@@ -4,6 +4,11 @@ import { User } from "../database/models.js";
 
 const router = Router();
 
+
+router.post("/",(req,res) =>{
+  res.send("vini")
+})
+
 router.post("/", async (req, res) => {
   const dado = req.body;
   const user = await User.findOne({
