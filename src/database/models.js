@@ -77,6 +77,7 @@ Achievement.belongsToMany(User, { through: 'UserAchievements'})
 (async () => {
     await User.sync()
     await Aulas.sync()
+    await Achievement.sync()
 })()
 
 export { User, Aulas }
