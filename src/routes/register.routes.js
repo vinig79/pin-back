@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
       email: dado.email,
     },
   });
-  if (user == null && dado ) {
+  if (user == null && dado != null) {
     await User.create({
       nome: dado.nome,
       email: dado.email,
