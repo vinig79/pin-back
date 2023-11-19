@@ -66,18 +66,17 @@ const Achievement = sequelize.define("achievement", {
 
 
 
-User.hasMany(Aulas, { foreignKey: "profId", onDelete: "CASCADE " });
-User.belongsToMany(Achievement, { through: 'UserAchievements'})
+User.hasMany(Aulas, { foreignKey: "profId", onDelete: "CASCADE" });
+User.belongsToMany(Achievement, { through: 'UserAchievements' });
 
 Aulas.belongsTo(User, { foreignKey: "profId" });
 
-Achievement.belongsToMany(User, { through: 'UserAchievements'})
-
+Achievement.belongsToMany(User, { through: 'UserAchievements' });
 
 (async () => {
-    await User.sync()
-    await Aulas.sync()
-    await Achievement.sync()
-})()
+    await User.sync();
+    await Aulas.sync();
+    await Achievement.sync();
+})();
 
 export { User, Aulas }
