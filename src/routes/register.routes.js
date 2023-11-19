@@ -5,7 +5,7 @@ import { User } from "../database/models.js";
 const router = Router();
 
 
-router.post("/",(req,res) =>{
+router.get("/",(req,res) =>{
   res.send("vini")
 })
 
