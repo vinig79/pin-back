@@ -51,19 +51,19 @@ const Aulas = sequelize.define('aulas', {
 
 
 const Achievement = sequelize.define("achievement", {
-    id:{
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    achievements:{
-        type: Sequelize.INTEGER
-    }
-},
-{
-    tableName: 'achievement',
-    timestamps: false
-})
+  id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+  },
+  achievements: {
+      type: Sequelize.INTEGER
+  }
+}, {
+  tableName: 'achievement',
+  timestamps: false
+});
+
 
 
 User.hasMany(Aulas, { foreignKey: "profId", onDelete: "CASCADE " });
