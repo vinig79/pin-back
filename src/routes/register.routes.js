@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
       });
     } else {
       console.log("passei");
-      res.json({ error: "usuario existente" });
+      res.json({ error: "Email ja cadastrado" });
     }
   } else {
     console.log("passei");

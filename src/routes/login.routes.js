@@ -1,9 +1,12 @@
 import { Router } from "express";
+import { User } from "../database/models.js";
 
 const router = Router();
 
 router.post("/", (req, res) => {
-  console.log(req.body);
+  const data = req.body;
+  
+
 });
 
 export default router;
