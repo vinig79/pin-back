@@ -61,7 +61,7 @@ const Achievement = sequelize.define("achievement", {
     }
 },
 {
-    tableName: 'aula',
+    tableName: 'achievement',
     timestamps: false
 })
 
