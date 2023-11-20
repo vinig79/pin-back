@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
     if (dado.password == user.senha){
       return res.json(user.email)
     } else{
-      return res.json({error:"senha incorreta"})
+      return res.json({error:"Senha incorreta"})
     }
 
 
