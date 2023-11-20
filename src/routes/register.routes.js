@@ -28,6 +28,7 @@ router.post("/", async (req, res) => {
     return res.json({ error: "Email já cadastrado" });
   }
   
+  
 });
 
 export default router;
