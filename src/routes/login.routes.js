@@ -7,7 +7,7 @@ router.post("/", async (req, res) => {
   try{
     const dado = req.body;
     if (!dado?.email || !dado?.password) {
-      return res.json({ error: "JSON vazio" });
+      return res.json({ error: "JSON invalido" });
     }
 
     const user = await User.findOne({
@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
     }
 
     if (dado.password == user.senha){
-      return res.json(user)
+      return res.json(user.email)
     } else{
       return
     }
