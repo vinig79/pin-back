@@ -4,30 +4,30 @@ import { User } from "../database/models.js";
 const router = Router();
 
 router.post("/", async (req, res) => {
-  const dado = req.body;
-  if (dado?.nome) {
-    const user = await User.findOne({
-      where: {
-        email: dado.email,
-      },
+  if (!dado?.nome) {
+    console.log("passei");
+    return res.json({ error: "JSON vazio" });
+  }
+  
+  const user = await User.findOne({
+    where: {
+      email: dado.email,
+    },
+  });
+  
+  if (user == null) {
+    await User.create({
+      nome: dado.nome,
+      email: dado.email,
+      senha: dado.password1,
+      isprofessor: dado.isprofessor,
     });
-    if (user == null) {
-      await User.create({
-        nome: dado.nome,
-        email: dado.email,
-        senha: dado.password1,
-        isprofessor: dado.isprofessor,
-      });
-    } else {
-      console.log("passei");
-      res.json({ error: "Email ja cadastrado" });
-    }
+    return res.send(await User.findAll());
   } else {
     console.log("passei");
-    res.json({ error: "json vazio" });
+    return res.json({ error: "Email já cadastrado" });
   }
-  console.log(req.body);
-  res.send(await User.findAll());
+  
 });
 
 export default router;
