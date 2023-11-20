@@ -6,7 +6,7 @@ const router = Router();
 router.post("/", async (req, res) => {
   try{
     const dado = req.body;
-    if (!dado?.email && !dado?.password) {
+    if (!dado?.email || !dado?.password) {
       return res.json({ error: "JSON vazio" });
     }
 
