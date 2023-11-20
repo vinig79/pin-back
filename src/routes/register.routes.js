@@ -26,9 +26,8 @@ router.post("/", async (req, res) => {
         isprofessor: dado.isprofessor,
       });
 
-      // Obtenha e envie todos os usuários após a criação bem-sucedida
-      const users = await User.findAll();
-      return res.json(users);
+      // criação bem-sucedida
+      return res.status(200);
     } else {
       console.log("passei");
       return res.json({ error: "Email já cadastrado" });
