@@ -1,7 +1,7 @@
 import express from 'express';
 //routes
 import index from './src/routes/index.routes.js';
-import home from './src/routes/home.routes.js';
+import achievement from './src/routes/achievement.routes.js';
 import register from './src/routes/register.routes.js';
 import login from './src/routes/login.routes.js';
 
@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/', index);
-app.use('/home', home);
+app.use('/achievement', achievement);
 app.use('/register', register);
 app.use('/login', login);
 
