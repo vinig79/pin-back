@@ -4,6 +4,7 @@ import index from './src/routes/index.routes.js';
 import home from './src/routes/home.routes.js';
 import register from './src/routes/register.routes.js';
 import login from './src/routes/login.routes.js';
+import jwt from 'jsonwebtoken';
 //db
 //import {User, Aulas} from './src/database/models.js'
 
