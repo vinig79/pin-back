@@ -8,7 +8,7 @@ router.post('/', async (req, res) => {
   try {
     const { email, password } = req.body;
     console.log(email)
-
+    
     // Verifique se o JSON é inválido
     if (!email || !password) {
       return res.json({ error: 'JSON inválido' });

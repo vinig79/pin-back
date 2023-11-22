@@ -11,7 +11,6 @@ router.get("/", verifyUser, async (req, res) =>{
   return res.json(achievement)
 })
 
-
 router.post("/", verifyUser, async (req, res) => {
   try {
     const dado = req.body;

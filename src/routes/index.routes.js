@@ -12,7 +12,7 @@ router.get("/", verifyUser , async (req, res) => {
     },
   });
 
-  return res.json({valid: true, email:email, name: user.name })
+  return res.json({valid: true, email:email, name:user.nome })
 });
 
 export default router;
