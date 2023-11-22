@@ -26,6 +26,7 @@ router.post("/", async (req, res) => {
       console.log("to aqui")
       const token = jwt.sign({email:user.email}, "jwt-secret-key", {expiresIn: 1000 * 60 * 60 * 24})
       res.cookie('token', token)
+      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
       return res.json({Status: "Sucess"})
       
     }
