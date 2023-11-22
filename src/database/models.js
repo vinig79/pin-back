@@ -73,10 +73,10 @@ Aulas.belongsTo(User, { foreignKey: "profId" });
 
 Achievement.belongsToMany(User, { through: 'UserAchievements' });
 
-
-await User.sync();
-await Aulas.sync();
-await Achievement.sync();
-
+(async () => {
+    await User.sync();
+    await Aulas.sync();
+    await Achievement.sync();
+})();
 
 export { User, Aulas, Achievement }
