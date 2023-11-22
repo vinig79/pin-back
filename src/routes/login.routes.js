@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
     });
 
     if (user == null){
-      //return res.json({error: "Usuario não existe"})
+      return res.json({error: "Usuario não existe"})
     }
 
     if (dado.password == user.senha){
