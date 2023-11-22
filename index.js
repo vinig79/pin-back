@@ -15,13 +15,11 @@ import cors from 'cors';
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-const corsOptions = {
-    origin: 'http://localhost:3000',
-    credentials: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  };
-  
-  app.use(cors(corsOptions));
+app.use(cors({
+    origin:["http://localhost:3000"],
+    methods: ["POST","GET"],
+    credentials:true
+}));
 app.use(cookieParser())
 
 app.use('/', index);

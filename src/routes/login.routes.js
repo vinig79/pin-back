@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { User } from "../database/models.js";
-import jwt from "jsonwebtoken"; 
-
+import jwt from "jsonwebtoken";
 
 const router = Router();
 
@@ -23,12 +22,21 @@ router.post("/", async (req, res) => {
     }
 
     if (dado.password == user.senha) {
-      console.log("to aqui")
-      const token = jwt.sign({email:user.email}, "jwt-secret-key", {expiresIn: 1000 * 60 * 60 * 24})
-      res.cookie('token', token)
-      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-      return res.json({Status: "Sucess"})
-      
+      console.log("to aqui");
+      const token = jwt.sign({ email: user.email }, "jwt-secret-key", {
+        expiresIn: 1000 * 60 * 60 * 24,
+      });
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Access-Control-Allow-Credentials", "true");
+      res.setHeader("Access-Control-Max-Age", "1800");
+      res.setHeader("Access-Control-Allow-Headers", "content-type");
+      res.setHeader(
+        "Access-Control-Allow-Methods",
+        "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+      );
+      res.cookie("token", token);
+
+      return res.json({ Status: "Sucess" });
     }
   } catch (error) {
     console.error("Erro no processamento:", error);
