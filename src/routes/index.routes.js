@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import verifyUser from "../middleware/verifyUser.middleware.js";
+
 const router = Router();
 
 router.get("/" ,(req, res) => {
