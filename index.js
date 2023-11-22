@@ -17,7 +17,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser)
-
 app.use('/', index);
 app.use('/achievement', achievement);
 app.use('/register', register);
