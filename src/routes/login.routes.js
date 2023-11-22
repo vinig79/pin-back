@@ -22,8 +22,9 @@ router.post("/", async (req, res) => {
     }
 
     if (dado.password == user.senha) {
-      const token = jwt.sign({email:user.email}, "jwtSecretKey", {expiresIn: 300})
-      return res.json({ login: true, token});
+      const token = jwt.sign({email:user.id}, "jwtSecretKey", {expiresIn: 300})
+      const data = {email:user.email , name: user.nome}
+      return res.json({  token, data});
     } else {
       return res.json({ error: "Senha incorreta" });
     }
