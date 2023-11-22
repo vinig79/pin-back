@@ -16,10 +16,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
-    methods: ['POST', 'GET'],
+    origin: '*', // Permitindo qualquer origem
+    methods: 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
     credentials: true,
-  })
+})
 );
 
 // Routes
