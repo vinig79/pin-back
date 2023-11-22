@@ -1,46 +1,42 @@
 import { Router } from "express";
-
 import { User, Achievement } from "../database/models.js";
-
 
 const router = Router();
 
 router.post("/", async (req, res) => {
-  const dado = req.body;
-  
+  try {
+    const dado = req.body;
 
-  // Função para adicionar uma medalha a um usuário
-
-try {
     // Encontrar o usuário pelo ID
-    const usuario = await  User.findOne({
-        where: {
-          email: dado.email,
-        },
-      });
+    const usuario = await User.findOne({
+      where: {
+        email: dado.email,
+      },
+    });
 
     if (!usuario) {
-    console.log("Usuário não encontrado");
-    return;
+      console.log("Usuário não encontrado");
+      return res.status(404).send("Usuário não encontrado");
     }
 
+    // Substitua medalhaId pelo ID da medalha desejada
+    const medalhaId = 1;
+
     // Criar uma medalha (se não existir)
-    const medalha = await Achievement.findOrCreate({
-    where: { id: medalhaId },
-    defaults: { achievements: 0 }, // Valor inicial, ajuste conforme necessário
+    const [medalha] = await Achievement.findOrCreate({
+      where: { id: medalhaId },
+      defaults: { achievements: 0 }, // Valor inicial, ajuste conforme necessário
     });
 
     // Adicionar a medalha ao usuário
-    await usuario.addAchievement(medalha[0]);
+    await usuario.addAchievement(medalha);
 
     console.log("Medalha adicionada ao usuário com sucesso!");
-} catch (error) {
+    res.status(200).send("Medalha adicionada ao usuário com sucesso!");
+  } catch (error) {
     console.error("Erro ao adicionar medalha ao usuário:", error);
-}
-
-
-// Exemplo de uso
-adicionarMedalhaAoUsuario(1, 1); // Substitua 1 pelo ID do usuário e da medalha desejados
+    res.status(500).send("Erro ao adicionar medalha ao usuário");
+  }
 });
 
 export default router;
