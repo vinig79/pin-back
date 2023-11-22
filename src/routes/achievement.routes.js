@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { User, Achievement } from "../database/models.js";
+import { User, Achievement } from "../database/models";
 
 
 const router = Router();
