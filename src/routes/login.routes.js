@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { User } from "../database/models.js";
-
+import jwt from "jsonwebtoken"; 
 
 const router = Router();
 
@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
     }
 
     if (dado.password == user.senha) {
-      
+      const token = jwt.sign({email:user.email}, "jwtSecretKey", {expiresIn: 300})
       return res.json({ login: true, token});
     } else {
       return res.json({ error: "Senha incorreta" });
