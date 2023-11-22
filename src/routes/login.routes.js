@@ -24,7 +24,6 @@ router.post("/", async (req, res) => {
 
     if (dado.password == user.senha) {
       const token = jwt.sign({email:user.email}, "jwt-secret-key", {expiresIn: "1d"})
-      const data = {email:user.email , name: user.nome}
       return res.cookie('token', token)
       
     }
