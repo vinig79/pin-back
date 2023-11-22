@@ -1,34 +1,34 @@
 import express from 'express';
-//routes
-import index from './src/routes/index.routes.js';
-import achievement from './src/routes/achievement.routes.js';
-import register from './src/routes/register.routes.js';
-import login from './src/routes/login.routes.js';
 import cookieParser from 'cookie-parser';
-
-//db
-//import {User, Aulas} from './src/database/models.js'
-
-//middleware
 import cors from 'cors';
 
+// Routes
+import indexRoutes from './src/routes/index.routes.js';
+import achievementRoutes from './src/routes/achievement.routes.js';
+import registerRoutes from './src/routes/register.routes.js';
+import loginRoutes from './src/routes/login.routes.js';
+
 const app = express();
+
+// Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors({
-    origin:["http://localhost:3000"],
-    methods: ["POST","GET"],
-    credentials:true
-}));
-app.use(cookieParser())
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: ['http://localhost:3000'],
+    methods: ['POST', 'GET'],
+    credentials: true,
+  })
+);
 
-app.use('/', index);
-app.use('/achievement', achievement);
-app.use('/register', register);
-app.use('/login', login);
-
+// Routes
+app.use('/', indexRoutes);
+app.use('/achievement', achievementRoutes);
+app.use('/register', registerRoutes);
+app.use('/login', loginRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
