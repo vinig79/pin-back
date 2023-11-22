@@ -9,11 +9,11 @@ const verifyUser = (req, res, next) =>{
       if(error){
         return res.json({error:"Token não esta integra"})
       }else{
-        req.email = decoded.email
+        req.dado = decoded.email
         next()
       }
     })
   }
 }
 
-export default verifyUser
+export default verifyUser 

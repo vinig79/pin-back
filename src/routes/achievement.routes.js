@@ -1,31 +1,51 @@
 import { Router } from "express";
 import { User, Achievement } from "../database/models.js";
+import verifyUser from "../middleware/verifyUser.middleware.js";
 
 const router = Router();
 
-router.post("/", async (req, res) => {
+router.get("/", verifyUser, async (req, res) =>{
+  const user = await User.findOne({where:{ email: req.dado}})
+  const achievement = await user.getAchievements();
+
+  return res.json(achievement)
+})
+
+
+router.post("/", verifyUser, async (req, res) => {
   try {
     const dado = req.body;
+    const trofeuNumero = dado.trofeuNumero;
 
-    // Encontrar o usuário pelo ID
+    if (!trofeuNumero || trofeuNumero < 1 || trofeuNumero > 6) {
+      console.log("Número do troféu inválido");
+      return res.status(400).send("Número do troféu inválido");
+    }
+
+    // Encontrar o usuário pelo e-mail
     const usuario = await User.findOne({
       where: {
-        email: dado.email,
+        email: req.dado, // Certifique-se de usar o campo de e-mail correto
       },
     });
 
     if (!usuario) {
       console.log("Usuário não encontrado");
-      return res.status(404).send("Usuário não encontrado");
+      return res.status(200).send("Usuário não encontrado");
     }
 
-    // Substitua medalhaId pelo ID da medalha desejada
-    const medalhaId = 1;
+    // Verificar se o usuário já possui a medalha
+    const hasAchievement = await usuario.hasAchievement(trofeuNumero);
 
-    // Criar uma medalha (se não existir)
+    if (hasAchievement) {
+      console.log("Usuário já possui essa medalha");
+      return res.status(200).send("Usuário já possui essa medalha");
+    }
+
+    // Encontrar ou criar a medalha
     const [medalha] = await Achievement.findOrCreate({
-      where: { id: medalhaId },
-      defaults: { achievements: 0 }, // Valor inicial, ajuste conforme necessário
+      where: { achievements: trofeuNumero },
+      defaults: { achievements: trofeuNumero },
     });
 
     // Adicionar a medalha ao usuário
@@ -35,8 +55,9 @@ router.post("/", async (req, res) => {
     res.status(200).send("Medalha adicionada ao usuário com sucesso!");
   } catch (error) {
     console.error("Erro ao adicionar medalha ao usuário:", error);
-    res.status(500).send("Erro ao adicionar medalha ao usuário");
+    res.status(200).send("Erro ao adicionar medalha ao usuário");
   }
 });
+
 
 export default router;

@@ -1,10 +1,18 @@
 import { Router } from "express";
+import { User } from "../database/models.js";
 
 import verifyUser from "../middleware/verifyUser.middleware.js";
 const router = Router();
 
-router.get("/", verifyUser ,(req, res) => {
-  return res.json({valid: true})
+router.get("/", verifyUser , async (req, res) => {
+  const email = req.dado
+  const user = await User.findOne({
+    where: {
+      email,
+    },
+  });
+
+  return res.json({valid: true, })
 });
 
 export default router;
