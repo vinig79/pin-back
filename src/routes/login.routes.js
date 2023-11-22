@@ -23,8 +23,10 @@ router.post("/", async (req, res) => {
     }
 
     if (dado.password == user.senha) {
+      console.log("to aqui")
       const token = jwt.sign({email:user.email}, "jwt-secret-key", {expiresIn: 1000 * 60 * 60 * 24})
-      return res.cookie('token', token)
+      res.cookie('token', token)
+      return res.json({Status: "Sucess"})
       
     }
   } catch (error) {
