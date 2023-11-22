@@ -1,21 +1,10 @@
 import { Router } from "express";
-import  jwt  from "jsonwebtoken";
 
+import verifyUser from "../middleware/verifyUser.middleware.js";
 const router = Router();
 
-router.get("/", (req, res) => {
-  const token = req.header["access-tonken"]
-  if(!token){
-    return res.json({error:"Token dont exists"})
-  } else{
-    jwt.verify(token, "jwtSecretKey", (err, decoded) =>{
-      if(err){
-        return res.json({error:"Not Authenticate"})
-      } else{
-        res.json({valid: true})
-      }
-    })
-  }
+router.get("/",verifyUser ,(req, res) => {
+  return res.json({valid: true})
 });
 
 export default router;
