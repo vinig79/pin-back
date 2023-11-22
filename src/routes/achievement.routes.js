@@ -7,7 +7,7 @@ const router = Router();
 router.get("/", verifyUser, async (req, res) =>{
   const user = await User.findOne({where:{ email: req.dado}})
   const achievement = await user.getAchievements();
-
+  console.log(achievement)
   return res.json(achievement)
 })
 
