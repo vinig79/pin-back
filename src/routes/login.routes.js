@@ -22,11 +22,10 @@ router.post("/", async (req, res) => {
     }
 
     if (dado.password == user.senha) {
-      const token = jwt.sign({email:user.id}, "jwtSecretKey", {expiresIn: 300})
+      const token = jwt.sign({email:user.email}, "jwt-secret-key", {expiresIn: "1d"})
       const data = {email:user.email , name: user.nome}
-      return res.json({  token, data});
-    } else {
-      return res.json({ error: "Senha incorreta" });
+      return res.cookie('token', token)
+      
     }
   } catch (error) {
     console.error("Erro no processamento:", error);
