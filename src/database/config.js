@@ -11,7 +11,7 @@ const sequelize = new Sequelize({
   username: 'default',
   password: 'nwMt5FXGQce9',
   ssl: {
-    require: true,
+    require: false,
     rejectUnauthorized: false, // Configuração temporária para lidar com certificados autoassinados (ajuste conforme necessário)
   },
 });
